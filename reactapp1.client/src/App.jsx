@@ -1,24 +1,20 @@
-import { useEffect, useState } from "react";
 import Header from "./components/Header";
-import WeatherList from "./components/WeatherList";
-import { getWeather } from "./services/weatherService";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-    const [weather, setWeather] = useState([]);
-
-    useEffect(() => {
-        getWeather().then(data => setWeather(data));
-    }, []);
-
     return (
-        <div className="bg-gray-100">
-            <Header />
+        <BrowserRouter>
+            <div className="bg-gray-100">
+                <Header />
 
-            {/* Centered content */}
-            <main className="flex justify-center">
-                <WeatherList weather={weather} />
-            </main>
-        </div>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                </Routes>
+            </div>
+        </BrowserRouter>
     );
 }
 
