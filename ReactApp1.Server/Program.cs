@@ -9,7 +9,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173") // ✅ FIXED
+           policy.WithOrigins("http://localhost:5173") // ✅ FIXED
+       //    policy.WithOrigins("https://reactapp.dotcompreview.com") // ✅ FIXED
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
