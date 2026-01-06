@@ -18,11 +18,34 @@ function Home() {
         });
     };
 
-    const handleSubmit = (e) => {
+    //const handleSubmit = (e) => {
+    //    e.preventDefault();
+    //    console.log("Form Data:", formData);
+    //    alert("Form submitted (frontend only)");
+    //};
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form Data:", formData);
-        alert("Form submitted (frontend only)");
-    }; 
+
+        try {
+            const res = await fetch("http://localhost:5092/api/contact/send", {
+
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            if (res.ok) {
+                alert("Email sent successfully ✅");
+            } else {
+                alert("Email failed ❌");
+            }
+        } catch (err) {
+            console.error(err);
+            alert("Server error ❌");
+        }
+    };
+
 
     return (
         <>
