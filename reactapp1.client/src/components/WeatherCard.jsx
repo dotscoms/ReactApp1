@@ -8,7 +8,7 @@ function WeatherCard({ date, temp, summary }) {
             </p>
 
             <p className="text-4xl font-extrabold text-blue-600">
-                {temp}°C
+                {temp} {"\u00B0"}C
             </p>
 
             <p className="mt-2 text-lg font-medium text-gray-700">
